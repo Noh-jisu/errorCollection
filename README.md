@@ -11,3 +11,10 @@
  - 원인 및 문제점 : Spring Boot로 서버를 켜고 웹페이지에서 게시판을 불러오는 도중에 500에러가 발생했다. 오류내용에서도 보이듯 this.sv(WorkBbsService sv)가 null이라는 내용이다. 
 Controller에서 Service를 찾지 못하는 상황.
  - 해결방법 : 처음에는 매개변수나 Dao에서 값을 잘못받아오는줄 알고 코드를 한참 보았다. 알고보니 간단한 실수였다. @AutoWired가 없었다. @Autowired는 스프링에서 사용되는 어노테이션인데 설정한 메서드가 자동으로 호출되고, 인스턴스가 자동으로 주입이 된다. 즉 @AutoWired가 없어서 Service가 호출되지않아 null값이 나왔던 것이었다.
+
+
+## 3. java.lang.NullPointerException: Attempt to invoke virtual method 'void android.support.v7.widget.RecyclerView.setAdapter(android.support.v7.widget.RecyclerView$Adapter)' on a null object reference
+ - 환경 : Android, kotlin
+ - 원인 및 문제점 : recyclerView에 어댑터를 설정하는 과정에서 생긴 오류. 기간검색 후 불러온 정보를 recyclerView로 띄우려고 하는데 서버에서는 문제없이 데이터가 넘어오는데 adapter가
+ 계속 null이 나오면서 오류가 발생했다.
+ - 해결방법 : 아무래도 팀프로젝트 협업이다보니 View의 id가 겹치거나 비슷했던게 원인이었다. recyclerview라는 id를 가진 View에 adapter를 적용해야하는데 recyclerView라는 id를 적었었다.
