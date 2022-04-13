@@ -20,4 +20,7 @@ Controller에서 Service를 찾지 못하는 상황.
  - 해결방법 : 아무래도 팀프로젝트 협업이다보니 View의 id가 겹치거나 비슷했던게 원인이었다. recyclerview라는 id를 가진 View에 adapter를 적용해야하는데 recyclerView라는 id를 적었었다.
 
 
-## 4. 현재 viewPager2와 파이어베이스에서 이미지를 불러와 슬라이드하는 작업에서 이미지가 겹쳐보이는 오류가 생긴다. uri경로를 통해서 불러와서 그런건지 로딩속도의 문제 혹은 미리 다운받아진 이미지가 아니라서 생긴 오류같은데 도저히 잡을수가없다. 오류 및 문제점은 현재 진행형이고 아직 해결하지 못했다(현재날짜: 2022-04-04)
+## 4. java.lang.IllegalArgumentException: Non-body HTTP method cannot contain @Body.
+ - 환경 : Android, kotlin, retrofit2
+ - 원인 및 문제점 : retrofit2를 이용하여 서버와 통신하던 중에 발생한 에러. 원인은 @GET방식을 사용하고 POST방식으로 서버로 데이터를 전달했던것이 문제였다.
+ - 해결방법 : 데이터 통신 방식을 @GET 과 @POST 둘중 하나만 사용한다.
